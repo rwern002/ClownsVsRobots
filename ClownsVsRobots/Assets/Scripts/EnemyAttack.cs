@@ -10,11 +10,13 @@ public class EnemyAttack : MonoBehaviour
     PlayerHealth playerHealth;                  // Reference to the player's health.
     EnemyHealth enemyHealth;                    // Reference to this enemy's health.
     bool playerInRange;                         // Whether player is within the trigger collider and can be attacked.
+    GameObject playerBase;
 
 
     void Awake()
     {
         // Setting up the references.
+        playerBase = GameObject.FindGameObjectWithTag("base");
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
@@ -24,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // If the entering collider is the player...
-        if (other.gameObject == player)
+        if (other.gameObject == playerBase)
         {
             // ... the player is in range.
             playerInRange = true;
@@ -35,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         // If the exiting collider is the player...
-        if (other.gameObject == player)
+        if (other.gameObject == playerBase)
         {
             // ... the player is no longer in range.
             playerInRange = false;
