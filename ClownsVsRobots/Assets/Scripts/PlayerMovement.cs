@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
         float vertMove = Input.GetAxis("Vertical");
 
         Vector3 movement = new Vector3(horMove, 0.0f, vertMove);
-
+        movement = Camera.main.transform.TransformDirection(movement);
+        movement.y = 0.0f;
         transform.Translate(movement * Time.deltaTime * speed);
     }
 
