@@ -16,7 +16,10 @@ public class EnemyAttack : MonoBehaviour
     {
         // Setting up the references.
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        if(player)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
         enemyHealth = GetComponent<EnemyHealth>();
     }
 
@@ -24,10 +27,13 @@ public class EnemyAttack : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // If the entering collider is the player...
-        if (other.gameObject == player)
+        if(player)
         {
-            // ... the player is in range.
-            playerInRange = true;
+            if (other.gameObject == player)
+            {
+                // ... the player is in range.
+                playerInRange = true;
+            }
         }
     }
 
@@ -35,10 +41,13 @@ public class EnemyAttack : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         // If the exiting collider is the player...
-        if (other.gameObject == player)
+        if(player)
         {
-            // ... the player is no longer in range.
-            playerInRange = false;
+            if (other.gameObject == player)
+            {
+                // ... the player is no longer in range.
+                playerInRange = false;
+            }
         }
     }
 
