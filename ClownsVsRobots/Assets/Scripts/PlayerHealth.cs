@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     public Slider healthSlider;                                 // Reference to the UI's health bar.
+    public int score;
 
     bool isDead;                                                // Whether the player is dead.
 
@@ -15,6 +16,7 @@ public class PlayerHealth : MonoBehaviour
     {
         // Set the initial health of the player.
         currentHealth = startingHealth;
+        score = 0;
     }
 
 
@@ -40,6 +42,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void AddScore(int amount)
+    {
+        score += amount;
+    }
 
     void Death()
     {
