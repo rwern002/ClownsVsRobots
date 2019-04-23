@@ -46,7 +46,7 @@ public class EnemyAttack : MonoBehaviour
     void Update()
     {
         // If the player is in range and this enemy is alive...
-        if (playerInRange && enemyHealth.currentHealth > 0)
+        if (playerInRange && enemyHealth.health > 0)
         {
             // ... attack.
             Attack();
