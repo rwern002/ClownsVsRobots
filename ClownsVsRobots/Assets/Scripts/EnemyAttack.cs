@@ -57,6 +57,7 @@ public class EnemyAttack : MonoBehaviour
     void Attack()
     {
         playerHealth.TakeDamage(attackDamage);
+        playerHealth.AddScore(enemyHealth.score);
         Destroy(gameObject);
     }
 }
