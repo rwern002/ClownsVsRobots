@@ -5,55 +5,17 @@ using UnityEngine;
 public class GridTest : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject sObj;
-
-    void Start()
-    {
-        
-    }
+    public GameObject target;
+    public GameObject tower;
+    Vector3 position;
+    public float gridSize;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
-        {
-            Debug.Log("Mouse is over: " + hit.collider.name);
-            GameObject hitObj = hit.transform.root.gameObject;
-            hoverObject(hitObj);
-        }
-
-        else
-        {
-            noSelect();
-        }
-    }
-
-    void hoverObject(GameObject obj)
-    {
-        if (sObj != null)
-        {
-            if (obj = sObj)
-            {
-                return;
-            }
-
-            noSelect();
-        }
-
-        sObj = obj;
-        Renderer[] rs = sObj.GetComponentsInChildren<Renderer>();
-        foreach (Renderer r in rs)
-        {
-            Material m = r.material;
-            m.color = Color.green;
-            r.material = m;
-        }
-    }
-
-    void noSelect()
-    {
-        sObj = null;
+        position.x = Mathf.Floor((target.transform.position.x /gridSize) * gridSize );
+        position.y = Mathf.Floor((target.transform.position.y / gridSize) * gridSize);
+        position.z = Mathf.Floor((target.transform.position.z / gridSize) * gridSize);
+        tower.transform.position = position;
     }
 }
