@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 809e302123c78974da8295a34bfb45f5
+=======
+guid: 9e6d3e910968ae149955948bc95b03e1
+>>>>>>> CreatePlayerBuild
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
