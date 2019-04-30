@@ -22,14 +22,16 @@ public class PlayerHealth : MonoBehaviour
         HUDCanvas = GameObject.Find("HUDCanvas");
         //scoreComponent = 
         //healthComponent = GameObject.FindGameObjectWithTag("health");
-        //currentHealth = startingHealth;
+        currentHealth = startingHealth;
         score = 0;
     }
 
 
     void Update()
     {
-        
+        // Set the health bar's value to the current health.
+        healthComponent.text = "Health: " + currentHealth.ToString() + " / " + startingHealth.ToString();
+        scoreComponent.text = "Score: " + score.ToString();
     }
 
 
@@ -37,9 +39,6 @@ public class PlayerHealth : MonoBehaviour
     {
         // Reduce the current health by the damage amount.
         currentHealth -= amount;
-
-        // Set the health bar's value to the current health.
-        healthComponent = currentHealth;
 
         // If the player has lost all it's health and the death flag hasn't been set yet...
         if (currentHealth <= 0 && !isDead)
