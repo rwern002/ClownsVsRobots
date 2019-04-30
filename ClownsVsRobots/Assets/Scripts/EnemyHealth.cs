@@ -14,7 +14,10 @@ public class EnemyHealth : MonoBehaviour
     {
         // Setting up the references.
         player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+        if(player)
+        {
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
         gameObject.tag = "enemy";
     }
 
@@ -23,7 +26,10 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0)
         {
-            playerHealth.AddScore(score);
+            if(playerHealth)
+            {
+                playerHealth.AddScore(score);
+            }
             Destroy(gameObject);
         }
     }
